@@ -7,9 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B4E041C2C638786008BBA35 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4E041B2C638786008BBA35 /* MainViewController.swift */; };
+		0B4E041F2C63E47C008BBA35 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 0B4E041E2C63E47C008BBA35 /* Then */; };
+		0B4E04222C63E488008BBA35 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0B4E04212C63E488008BBA35 /* SnapKit */; };
+		0B4E04262C63E4B3008BBA35 /* String+HashExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4E04252C63E4B3008BBA35 /* String+HashExtensions.swift */; };
+		0B4E04282C63E4C3008BBA35 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4E04272C63E4C3008BBA35 /* KeychainService.swift */; };
+		0B4E042A2C63E4D1008BBA35 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4E04292C63E4D1008BBA35 /* AuthViewController.swift */; };
+		0B4E04302C63F9EF008BBA35 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4E042F2C63F9EF008BBA35 /* AlertManager.swift */; };
+		0B4E04362C63FF7E008BBA35 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4E04352C63FF7E008BBA35 /* MainView.swift */; };
+		0B4E04382C63FF85008BBA35 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4E04372C63FF85008BBA35 /* AuthView.swift */; };
 		0BC558EF2C63658700BA48F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC558EE2C63658700BA48F2 /* AppDelegate.swift */; };
 		0BC558F12C63658700BA48F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC558F02C63658700BA48F2 /* SceneDelegate.swift */; };
-		0BC558F32C63658700BA48F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC558F22C63658700BA48F2 /* ViewController.swift */; };
 		0BC558F62C63658700BA48F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BC558F42C63658700BA48F2 /* Main.storyboard */; };
 		0BC558FB2C63658900BA48F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BC558FA2C63658900BA48F2 /* Assets.xcassets */; };
 		0BC558FE2C63658900BA48F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BC558FC2C63658900BA48F2 /* LaunchScreen.storyboard */; };
@@ -17,10 +25,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B4E041B2C638786008BBA35 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		0B4E04252C63E4B3008BBA35 /* String+HashExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HashExtensions.swift"; sourceTree = "<group>"; };
+		0B4E04272C63E4C3008BBA35 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		0B4E04292C63E4D1008BBA35 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		0B4E042F2C63F9EF008BBA35 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		0B4E04352C63FF7E008BBA35 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		0B4E04372C63FF85008BBA35 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		0BC558EB2C63658700BA48F2 /* login-package.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "login-package.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BC558EE2C63658700BA48F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BC558F02C63658700BA48F2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0BC558F22C63658700BA48F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0BC558F52C63658700BA48F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0BC558FA2C63658900BA48F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0BC558FD2C63658900BA48F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -33,12 +47,52 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B4E041F2C63E47C008BBA35 /* Then in Frameworks */,
+				0B4E04222C63E488008BBA35 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B4E04312C63FE76008BBA35 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0BC558F42C63658700BA48F2 /* Main.storyboard */,
+				0BC558FC2C63658900BA48F2 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0B4E04322C63FF05008BBA35 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0B4E04272C63E4C3008BBA35 /* KeychainService.swift */,
+				0B4E04252C63E4B3008BBA35 /* String+HashExtensions.swift */,
+				0BC559052C6365AA00BA48F2 /* UserModel.xcdatamodeld */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0B4E04332C63FF1A008BBA35 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0B4E04352C63FF7E008BBA35 /* MainView.swift */,
+				0B4E04372C63FF85008BBA35 /* AuthView.swift */,
+				0B4E042F2C63F9EF008BBA35 /* AlertManager.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0B4E04342C63FF33008BBA35 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0B4E041B2C638786008BBA35 /* MainViewController.swift */,
+				0B4E04292C63E4D1008BBA35 /* AuthViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		0BC558E22C63658700BA48F2 = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +112,14 @@
 		0BC558ED2C63658700BA48F2 /* login-package */ = {
 			isa = PBXGroup;
 			children = (
+				0B4E04322C63FF05008BBA35 /* Models */,
+				0B4E04332C63FF1A008BBA35 /* Views */,
+				0B4E04342C63FF33008BBA35 /* Controllers */,
+				0B4E04312C63FE76008BBA35 /* Resources */,
 				0BC558EE2C63658700BA48F2 /* AppDelegate.swift */,
 				0BC558F02C63658700BA48F2 /* SceneDelegate.swift */,
-				0BC558F22C63658700BA48F2 /* ViewController.swift */,
-				0BC558F42C63658700BA48F2 /* Main.storyboard */,
-				0BC558FA2C63658900BA48F2 /* Assets.xcassets */,
-				0BC558FC2C63658900BA48F2 /* LaunchScreen.storyboard */,
 				0BC558FF2C63658900BA48F2 /* Info.plist */,
-				0BC559052C6365AA00BA48F2 /* UserModel.xcdatamodeld */,
+				0BC558FA2C63658900BA48F2 /* Assets.xcassets */,
 			);
 			path = "login-package";
 			sourceTree = "<group>";
@@ -86,6 +140,10 @@
 			dependencies = (
 			);
 			name = "login-package";
+			packageProductDependencies = (
+				0B4E041E2C63E47C008BBA35 /* Then */,
+				0B4E04212C63E488008BBA35 /* SnapKit */,
+			);
 			productName = "login-package";
 			productReference = 0BC558EB2C63658700BA48F2 /* login-package.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +172,10 @@
 				Base,
 			);
 			mainGroup = 0BC558E22C63658700BA48F2;
+			packageReferences = (
+				0B4E041D2C63E47C008BBA35 /* XCRemoteSwiftPackageReference "Then" */,
+				0B4E04202C63E488008BBA35 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 0BC558EC2C63658700BA48F2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -142,9 +204,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BC559072C6365AA00BA48F2 /* UserModel.xcdatamodeld in Sources */,
-				0BC558F32C63658700BA48F2 /* ViewController.swift in Sources */,
+				0B4E04362C63FF7E008BBA35 /* MainView.swift in Sources */,
 				0BC558EF2C63658700BA48F2 /* AppDelegate.swift in Sources */,
+				0B4E041C2C638786008BBA35 /* MainViewController.swift in Sources */,
+				0B4E04282C63E4C3008BBA35 /* KeychainService.swift in Sources */,
 				0BC558F12C63658700BA48F2 /* SceneDelegate.swift in Sources */,
+				0B4E04382C63FF85008BBA35 /* AuthView.swift in Sources */,
+				0B4E04302C63F9EF008BBA35 /* AlertManager.swift in Sources */,
+				0B4E042A2C63E4D1008BBA35 /* AuthViewController.swift in Sources */,
+				0B4E04262C63E4B3008BBA35 /* String+HashExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +435,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0B4E041D2C63E47C008BBA35 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		0B4E04202C63E488008BBA35 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0B4E041E2C63E47C008BBA35 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B4E041D2C63E47C008BBA35 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		0B4E04212C63E488008BBA35 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B4E04202C63E488008BBA35 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		0BC559052C6365AA00BA48F2 /* UserModel.xcdatamodeld */ = {
