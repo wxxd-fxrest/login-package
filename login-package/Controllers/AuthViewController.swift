@@ -12,6 +12,7 @@ import Then
 class AuthViewController: UIViewController {
     
     private let authView = AuthView()
+    private var currentEmail: String = ""
     
     override func loadView() {
         view = authView
@@ -69,6 +70,8 @@ class AuthViewController: UIViewController {
             AlertManager.shared.showAlert(on: self, title: "회원가입", message: "사용자 이름과 비밀번호를 입력해 주세요.")
             return
         }
+        
+        currentEmail = email
 
         let hashedPassword = password.sha256()
         
@@ -87,6 +90,8 @@ class AuthViewController: UIViewController {
                 newUser.isLoggedIn = true // 로그인 상태 업데이트
                 try context.save() // 변경 사항 저장
                 
+                UserDefaults.standard.set(currentEmail, forKey: "currentEmail")
+                
                 KeychainService.savePassword(service: "MyApp", account: email, password: hashedPassword)
                 // 회원가입 성공 후 알럿 표시 및 MainViewController로 이동
                 AlertManager.shared.showSignInAlert(on: self, message: "회원가입을 축하드립니다.") {
@@ -98,6 +103,9 @@ class AuthViewController: UIViewController {
                 if user.password == hashedPassword {
                     user.isLoggedIn = true
                     try context.save()
+                    
+                    UserDefaults.standard.set(currentEmail, forKey: "currentEmail")
+              
                     // 로그인 성공 후 알럿 표시 및 MainViewController로 이동
                     AlertManager.shared.showSignInAlert(on: self, message: "로그인이 완료되었습니다.") {
                         self.navigateToMainViewController()

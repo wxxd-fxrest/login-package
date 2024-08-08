@@ -11,7 +11,8 @@ import CoreData
 class MainViewController: UIViewController {
     
     private let mainView = MainView()
-    
+    private var currentEmail: String = ""
+
     override func loadView() {
         view = mainView
     }
@@ -34,20 +35,32 @@ class MainViewController: UIViewController {
     private func displayUserInfo() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+        
+        if let loadedEmail = UserDefaults.standard.string(forKey: "currentEmail") {
+            currentEmail = loadedEmail
+            print("Auth | currentEmail \(currentEmail)")
+            
+            if currentEmail != "" {
+                // currentEmail에 저장된 이메일 주소에 해당하는 사용자만 가져오는 조건 추가
+                let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "email == %@", currentEmail)
 
-        do {
-            let users = try context.fetch(fetchRequest)
-            if let user = users.first {
-                print("Auth | user: Email: \(user.email ?? "N/A"), Nickname: \(user.nickname ?? "없음"), isLoggedIn: \(user.isLoggedIn)")
-                // 닉네임이 비어있지 않으면 닉네임을, 그렇지 않으면 이메일을 사용하여 메시지 출력
-                mainView.updateWelcomeLabel(withText: user.nickname?.isEmpty == false ? "\(user.nickname ?? user.email ?? "정보 없음") 님 환영합니다!" : "\(user.email ?? "정보 없음")님 환영합니다!")
-            } else {
-                mainView.updateWelcomeLabel(withText: "사용자 정보가 없습니다.")
+                do {
+                    let users = try context.fetch(fetchRequest)
+                    print("Auth | users \(users)")
+                    if let user = users.first {
+                        print("Auth | user: Email: \(user.email ?? "N/A"), Nickname: \(user.nickname ?? "없음"), isLoggedIn: \(user.isLoggedIn)")
+                        
+                        // 닉네임이 비어있지 않으면 닉네임을, 그렇지 않으면 이메일을 사용하여 메시지 출력
+                        mainView.updateWelcomeLabel(withText: user.nickname?.isEmpty == false ? "\(user.nickname ?? user.email ?? "정보 없음") 님 환영합니다!" : "\(user.email ?? "정보 없음")님 환영합니다!")
+                    } else {
+                        mainView.updateWelcomeLabel(withText: "사용자 정보가 없습니다.")
+                    }
+                } catch {
+                    print("정보 오류: \(error)")
+                    mainView.updateWelcomeLabel(withText: "데이터를 가져오는 중 오류 발생")
+                }
             }
-        } catch {
-            print("정보 오류: \(error)")
-            mainView.updateWelcomeLabel(withText: "데이터를 가져오는 중 오류 발생")
         }
     }
     
@@ -96,16 +109,28 @@ class MainViewController: UIViewController {
     private func updateUsername(_ newUsername: String) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
+        
+        // UserDefaults에서 currentEmail 가져오기
+        guard let currentEmail = UserDefaults.standard.string(forKey: "currentEmail") else {
+            print("현재 이메일을 불러올 수 없습니다.")
+            return
+        }
+        
+        // currentEmail과 일치하는 사용자를 찾기 위한 fetchRequest 생성
         let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "email == %@", currentEmail)
         
         do {
+            // 이메일이 일치하는 사용자를 검색
             let users = try context.fetch(fetchRequest)
             if let user = users.first {
-                user.nickname = newUsername // 사용자 이름 업데이트
+                user.nickname = newUsername // 닉네임 업데이트
                 try context.save() // 변경 사항 저장
                 AlertManager.shared.showSignInAlert(on: self, message: "닉네임 수정이 완료되었습니다.") {
                     self.displayUserInfo() // 화면 업데이트
                 }
+            } else {
+                print("일치하는 사용자를 찾을 수 없습니다.")
             }
         } catch {
             print("닉네임 업데이트 오류: \(error)")
@@ -123,6 +148,7 @@ class MainViewController: UIViewController {
                 print("Logout | 업데이트 전 isLoggedIn 상태: \(user.isLoggedIn)")
                 user.isLoggedIn = false
                 try context.save()
+                UserDefaults.standard.removeObject(forKey: "currentEmail")
                 print("Logout | 업데이트 후 isLoggedIn 상태: \(user.isLoggedIn)")
             }
         } catch {
@@ -144,6 +170,7 @@ class MainViewController: UIViewController {
             if let user = users.first {
                 context.delete(user)
                 try context.save()
+                UserDefaults.standard.removeObject(forKey: "currentEmail")
                 print("회원 탈퇴 완료")
                 AlertManager.shared.showSuccessAlert(on: self, title: "회원탈퇴 완료", message: "계정 탈퇴가 완료되었습니다.") {
                     self.navigateToAuthViewController()
